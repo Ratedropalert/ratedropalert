@@ -41,7 +41,7 @@ export default function RateAlertForm() {
       last_name: "",
       phone: "",
       email: "",
-      property_type: undefined,
+      property_type: "Single Family",
       occupancy_type: "Primary Residence",
       estimated_credit_score: "760+",
       current_loan_amount: 0,

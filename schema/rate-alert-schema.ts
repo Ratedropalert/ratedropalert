@@ -28,8 +28,8 @@ export const rateAlertSchema = z.object({
   estimated_property_value: z
     .number()
     .min(1, "Estimated property value is required"),
-  email_alerts: z.boolean().default(true),
-  allow_offers: z.boolean().default(false),
+  email_alerts: z.boolean(),
+  allow_offers: z.boolean(),
 });
 
 export type RateAlertFormData = z.infer<typeof rateAlertSchema>;
