@@ -283,14 +283,14 @@ export function ImmersiveStory() {
               We&apos;ll let you know when refinancing actually makes sense
             </p>
             <div className="flex items-center justify-center">
-              <ArrowUp className="rotate-45 text-red-500 font-extrabold w-8 h-8 sm:w-14 sm:h-14" />
-              <span className="sm:text-5xl text-3xl font-extrabold text-[#ef4444]">
+              <ArrowUp className="rotate-45 text-red-500 font-extrabold w-12 h-12 sm:w-20 sm:h-20" />
+              <span className="sm:text-7xl text-5xl font-extrabold text-[#ef4444]">
                 Rate
               </span>
-              <span className="sm:text-5xl text-3xl font-extrabold text-[#22c55e]">
+              <span className="sm:text-7xl text-5xl font-extrabold text-[#22c55e]">
                 Drop
               </span>
-              <span className="sm:text-5xl text-3xl font-extrabold text-white">
+              <span className="sm:text-7xl text-5xl font-extrabold text-white">
                 Alert
               </span>
             </div>

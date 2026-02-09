@@ -1,14 +1,23 @@
 import Link from "next/link";
-import { Zap } from "lucide-react";
+import { Zap, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 w-full z-50 backdrop-blur-xl py-4">
       <nav className="flex items-center justify-between max-w-6xl mx-auto w-full px-6">
-        <div className="flex items-center gap-2 text-emerald-500 font-bold">
-          <Zap /> RateDropAlert
-        </div>
+        <Link href="/" className="flex items-center justify-center gap-0">
+          <ArrowUp className="rotate-45 text-red-500 font-extrabold w-5 h-5 sm:w-6 sm:h-6" />
+          <span className="sm:text-2xl text-xl font-extrabold text-[#ef4444]">
+            Rate
+          </span>
+          <span className="sm:text-2xl text-xl font-extrabold text-[#22c55e]">
+            Drop
+          </span>
+          <span className="sm:text-2xl text-xl font-extrabold text-white">
+            Alert
+          </span>
+        </Link>
         <Button
           asChild
           variant="outline"
