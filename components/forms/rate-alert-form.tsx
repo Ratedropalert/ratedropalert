@@ -218,6 +218,9 @@ export default function RateAlertForm() {
                   className="bg-slate-950/50 border-slate-800 text-slate-200 focus:border-slate-600 focus:ring-slate-600/20 h-12"
                   placeholder="Mobile Phone"
                 />
+                <p className="text-[10px] text-slate-500 mt-1 leading-tight">
+                  By providing your phone number, you consent to receive rate alerts via SMS. Message and data rates may apply.
+                </p>
                 {fieldState.invalid && (
                   <FieldError
                     errors={[fieldState.error]}
