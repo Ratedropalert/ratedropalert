@@ -59,14 +59,26 @@ export default function RateAlertForm() {
   const onSubmit = async (data: RateAlertFormData) => {
     try {
       // Save to Supabase first
-      await saveRateAlert(data);
+      const dbResult = await saveRateAlert(data);
+      if (!dbResult.success) {
+        toast.error(`Database Error: ${dbResult.error}`);
+        return;
+      }
+
       // Then send the email
-      await sendContactAlertEmail(data);
+      const emailResult = await sendContactAlertEmail(data);
+      if (!emailResult.success) {
+        // We still consider it a "success" if it's in DB but email failed, 
+        // but we should warn the user.
+        toast.warning(`Alert set, but notification email failed: ${emailResult.error}`);
+      } else {
+        toast.success("Rate alert created successfully");
+      }
+
       setIsSubmitted(true);
-      toast.success("Rate alert created successfully");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Submission error:", error);
-      toast.error("Failed to create rate alert");
+      toast.error(error.message || "Failed to create rate alert. Please try again.");
     }
   };
 
