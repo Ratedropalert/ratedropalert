@@ -21,7 +21,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { cn } from "@/lib/utils";
 import { Field, FieldError, FieldLabel } from "../ui/field";
-import { check, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { sendContactAlertEmail } from "@/actions/send-mail-action";
 import { saveRateAlert } from "@/actions/supabase-actions";
 
