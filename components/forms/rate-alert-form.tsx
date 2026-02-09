@@ -193,7 +193,7 @@ export default function RateAlertForm() {
                     htmlFor={field.name}
                     className="text-slate-400 font-normal"
                   >
-                    Last Name <span className="text-slate-600">(optional)</span>
+                    Last Name
                   </FieldLabel>
                   <Input
                     id={field.name}

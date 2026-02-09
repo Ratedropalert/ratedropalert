@@ -3,7 +3,7 @@ import { z } from "zod";
 export const rateAlertSchema = z.object({
   target_rate: z.number().min(1, "Target rate is required"),
   first_name: z.string().min(1, "First name is required"),
-  last_name: z.string().optional(),
+  last_name: z.string().min(1, "Last name is required"),
   phone: z.string().min(1, "Phone number is required"),
   email: z.email("Email is invalid"),
   property_type: z.enum([
