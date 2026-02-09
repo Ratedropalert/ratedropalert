@@ -278,15 +278,22 @@ export function ImmersiveStory() {
           ref={p1Ref}
           className="sm:absolute sm:inset-0 panel-content pointer-events-auto pt-16 opacity-100 transition-opacity duration-500 ease-out max-w-6xl mx-auto w-full px-6"
         >
-          <div className="flex items-center justify-center mb-8">
-            <ArrowUp className="rotate-45 text-red-500 font-extrabold w-8 h-8 sm:w-14 sm:h-14" />
-            <span className="sm:text-5xl text-3xl font-extrabold text-red-500">
-              Rate
-            </span>
-            <span className="sm:text-5xl text-3xl font-extrabold text-green-500">
-              Drop
-            </span>
-            <span className="sm:text-5xl text-3xl font-extrabold ">Alert</span>
+          <div className="flex flex-col items-center justify-center mb-8">
+            <p className="text-yellow-400 text-[10px] sm:text-sm font-bold mb-2">
+              We&apos;ll let you know when refinancing actually makes sense
+            </p>
+            <div className="flex items-center justify-center">
+              <ArrowUp className="rotate-45 text-red-500 font-extrabold w-8 h-8 sm:w-14 sm:h-14" />
+              <span className="sm:text-5xl text-3xl font-extrabold text-[#ef4444]">
+                Rate
+              </span>
+              <span className="sm:text-5xl text-3xl font-extrabold text-[#22c55e]">
+                Drop
+              </span>
+              <span className="sm:text-5xl text-3xl font-extrabold text-white">
+                Alert
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
             <div className="sm:col-span-5 space-y-3 text-center sm:text-left">
@@ -463,11 +470,10 @@ export function ImmersiveStory() {
                         ref={(el) => {
                           if (el && isDesktop) graphBarsRef.current[i] = el; // only animate desktop bars
                         }}
-                        className={`w-full rounded-t-sm ${
-                          isRed
-                            ? "bg-linear-to-t from-red-900/80 to-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)]"
-                            : "bg-linear-to-t from-emerald-900/80 to-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
-                        }`}
+                        className={`w-full rounded-t-sm ${isRed
+                          ? "bg-linear-to-t from-red-900/80 to-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)]"
+                          : "bg-linear-to-t from-emerald-900/80 to-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                          }`}
                         style={{ height }}
                       />
                     );
@@ -529,7 +535,7 @@ export function ImmersiveStory() {
                 className="w-full mt-6 bg-white text-black hover:bg-slate-200 h-12 text-base font-bold"
                 asChild
               >
-                <Link href="/signup">Set Alerts</Link>
+                <Link href="/signup">Set My Rate Alert</Link>
               </Button>
 
               <div className="mt-auto pt-4 text-center">
@@ -559,7 +565,7 @@ export function ImmersiveStory() {
               variant="outline"
               className="mt-4 md:mt-0 bg-yellow-500/10 text-yellow-500 border-yellow-500/20 hover:bg-yellow-500/20 hover:text-yellow-400"
             >
-              <Star className="w-4 h-4 mr-2 fill-current" /> Notify Me
+              <Star className="w-4 h-4 mr-2 fill-current" /> Set My Rate Alert
             </Button>
           </div>
 
@@ -595,40 +601,47 @@ export function ImmersiveStory() {
             </Card>
 
             {/* Live Data Card */}
-            <Card className="bg-slate-900/40 backdrop-blur-md border-t-2 border-t-purple-500/50 p-6 min-h-80">
-              <div className="flex justify-between items-start mb-6">
-                <Cpu className="text-purple-400" />
-                <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/20">
-                  LIVE DATA
-                </Badge>
+            <div className="relative group">
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-full text-center opacity-0 group-hover:opacity-100 sm:opacity-100 transition-opacity">
+                <p className="text-yellow-400 text-[10px] font-bold">
+                  Smart homeowners don&apos;t watch rates — they get alerts
+                </p>
               </div>
-              <div className="space-y-4 grow">
-                {[
-                  {
-                    label: "Fed Rate",
-                    width: "80%",
-                    color: "bg-emerald-500",
-                  },
-                  { label: "10Y Yield", width: "60%", color: "bg-blue-500" },
-                  { label: "CPI", width: "45%", color: "bg-purple-500" },
-                ].map((item, idx) => (
-                  <div key={idx} className="space-y-1">
-                    <div className="flex justify-between text-xs font-mono text-white">
-                      <span>{item.label}</span>
+              <Card className="bg-slate-900/40 backdrop-blur-md border-t-2 border-t-purple-500/50 p-6 min-h-80 relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <Cpu className="text-purple-400" />
+                  <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/20">
+                    LIVE DATA
+                  </Badge>
+                </div>
+                <div className="space-y-4 grow">
+                  {[
+                    {
+                      label: "Fed Rate",
+                      width: "80%",
+                      color: "bg-emerald-500",
+                    },
+                    { label: "10Y Yield", width: "60%", color: "bg-blue-500" },
+                    { label: "CPI", width: "45%", color: "bg-purple-500" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="space-y-1">
+                      <div className="flex justify-between text-xs font-mono text-white">
+                        <span>{item.label}</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full ${item.color}`}
+                          style={{ width: item.width }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full ${item.color}`}
-                        style={{ width: item.width }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Button className="w-full mt-6 bg-white text-black hover:bg-slate-200 h-10 text-base font-bold">
-                <Link href="/signup">Set a Rate</Link>
-              </Button>
-            </Card>
+                  ))}
+                </div>
+                <Button className="w-full mt-6 bg-white text-black hover:bg-slate-200 h-10 text-base font-bold">
+                  <Link href="/signup">Set My Rate Alert</Link>
+                </Button>
+              </Card>
+            </div>
 
             {/* Auto Notify Card */}
             <Card className="bg-slate-900/40 backdrop-blur-md border-t-2 border-t-blue-500/50 p-6 min-h-80">

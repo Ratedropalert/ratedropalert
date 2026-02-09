@@ -18,7 +18,8 @@ export async function saveRateAlert(data: RateAlertFormData) {
                 estimated_credit_score: data.estimated_credit_score,
                 current_loan_amount: data.current_loan_amount,
                 estimated_property_value: data.estimated_property_value,
-                confirm: data.confirm,
+                email_alerts: data.email_alerts,
+                allow_offers: data.allow_offers,
             }
         ])
         .select()

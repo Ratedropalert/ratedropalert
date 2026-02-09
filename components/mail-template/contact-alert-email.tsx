@@ -126,7 +126,22 @@ export default function rateAlertNotifyEmail(data: RateAlertFormData) {
                         $${data.estimated_property_value.toLocaleString()}
                       </td>
                     </tr>
-
+                    <tr>
+                      <td style="padding: 12px 14px; background:#f9fafb; font-size:13px; color:#6b7280;">
+                        Email Alerts
+                      </td>
+                      <td style="padding: 12px 14px; font-size:14px;">
+                        ${data.email_alerts ? "Yes" : "No"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 14px; background:#f9fafb; font-size:13px; color:#6b7280;">
+                        Allow Offers
+                      </td>
+                      <td style="padding: 12px 14px; font-size:14px;">
+                        ${data.allow_offers ? "Yes" : "No"}
+                      </td>
+                    </tr>
                   </table>
 
                   <!-- CTA -->

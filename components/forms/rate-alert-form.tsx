@@ -21,10 +21,12 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { cn } from "@/lib/utils";
 import { Field, FieldError, FieldLabel } from "../ui/field";
+import { check, Check } from "lucide-react";
 import { sendContactAlertEmail } from "@/actions/send-mail-action";
 import { saveRateAlert } from "@/actions/supabase-actions";
 
 export default function RateAlertForm() {
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const {
     control,
     handleSubmit,
@@ -44,7 +46,8 @@ export default function RateAlertForm() {
       estimated_credit_score: "760+",
       current_loan_amount: 0,
       estimated_property_value: 0,
-      confirm: false,
+      email_alerts: true,
+      allow_offers: false,
     },
   });
 
@@ -59,13 +62,38 @@ export default function RateAlertForm() {
       await saveRateAlert(data);
       // Then send the email
       await sendContactAlertEmail(data);
-      reset();
+      setIsSubmitted(true);
       toast.success("Rate alert created successfully");
     } catch (error) {
       console.error("Submission error:", error);
       toast.error("Failed to create rate alert");
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <Card className="max-w-xl mx-auto border-none bg-slate-900/50 shadow-2xl backdrop-blur-xl text-slate-200 p-8 text-center">
+        <CardContent className="space-y-6 pt-6">
+          <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-500 mx-auto mb-6">
+            <Check className="w-10 h-10" />
+          </div>
+          <h2 className="text-3xl font-bold text-white">Thank You!</h2>
+          <p className="text-slate-400 text-lg">
+            Your rate alert has been set. We&apos;ll notify you as soon as rates reach your target of <span className="text-white font-bold">{targetRate}%</span>.
+          </p>
+          <Button
+            onClick={() => {
+              setIsSubmitted(false);
+              reset();
+            }}
+            className="mt-8 bg-slate-800 hover:bg-slate-700 text-white"
+          >
+            Set Another Alert
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className="max-w-xl mx-auto border-none bg-slate-900/50 shadow-2xl backdrop-blur-xl text-slate-200">
@@ -447,49 +475,57 @@ export default function RateAlertForm() {
             }}
           />
 
-          {/* Checkbox */}
-          <Controller
-            name="confirm"
-            control={control}
-            render={({ field, fieldState }) => (
-              <Field>
-                <Field
-                  data-invalid={fieldState.invalid}
-                  orientation="horizontal"
-                >
+          {/* Checkboxes */}
+          <div className="space-y-4">
+            <Controller
+              name="email_alerts"
+              control={control}
+              render={({ field }) => (
+                <div className="flex items-start gap-3">
                   <Checkbox
                     id={field.name}
                     checked={field.value}
                     onCheckedChange={field.onChange}
                     className="border-slate-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 mt-1"
                   />
-                  <FieldLabel
+                  <Label
                     htmlFor={field.name}
-                    className="text-slate-400 font-normal"
+                    className="text-slate-400 font-normal leading-tight cursor-pointer"
                   >
-                    <p>
-                      <span className="text-white font-medium">Share my</span>{" "}
-                      request with multiple lenders for offers. Lenders contact
-                      you only if you approve.
-                    </p>
-                  </FieldLabel>
-                </Field>
-                {fieldState.invalid && (
-                  <FieldError
-                    errors={[fieldState.error]}
-                    className="text-red-500 text-xs"
+                    Send me email alerts when my target rate is reached
+                  </Label>
+                </div>
+              )}
+            />
+
+            <Controller
+              name="allow_offers"
+              control={control}
+              render={({ field }) => (
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id={field.name}
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    className="border-slate-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 mt-1"
                   />
-                )}
-              </Field>
-            )}
-          />
+                  <Label
+                    htmlFor={field.name}
+                    className="text-slate-400 font-normal leading-tight cursor-pointer"
+                  >
+                    When my target rate is reached, allow lenders to send me offers.
+                  </Label>
+                </div>
+              )}
+            />
+          </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
             className="w-full h-12 text-lg bg-linear-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white border-t border-slate-600 shadow-lg"
           >
-            {isSubmitting ? "Submitting..." : "Set Alert"}
+            {isSubmitting ? "Submitting..." : "Set My Rate Alert"}
           </Button>
 
           <p className="text-center text-xs text-slate-500 mt-4">

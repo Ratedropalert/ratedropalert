@@ -15,7 +15,7 @@ export default function Navbar() {
           className=" bg-yellow-500/10 text-yellow-500 border-yellow-500/20 hover:bg-yellow-500/20 hover:text-yellow-400 gap-0"
         >
           <Link href="/signup">
-            <Zap className="mr-2 w-4 h-4" /> Get Notified
+            <Zap className="mr-2 w-4 h-4" /> Set My Rate Alert
           </Link>
         </Button>
       </nav>
