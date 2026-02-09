@@ -36,7 +36,7 @@ export function MarketIntel() {
   ];
 
   return (
-    <section className="relative py-24 px-4 md:px-6 bg-black border-t border-white/5 z-20">
+    <section className="relative py-12 sm:py-24 px-4 md:px-6 bg-black border-t border-white/5 z-20">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <div className="text-center md:text-left">

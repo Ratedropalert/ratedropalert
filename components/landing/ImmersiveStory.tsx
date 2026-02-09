@@ -272,7 +272,7 @@ export function ImmersiveStory() {
   return (
     <div ref={wrapperRef} className="relative min-h-dvh overflow-hidden">
       {/* Content Container */}
-      <div className="sm:fixed sm:inset-0 flex flex-col items-center justify-center z-10 pointer-events-none ">
+      <div className="sm:fixed sm:inset-0 flex flex-col items-center justify-center z-10 pointer-events-none gap-0 sm:gap-0">
         <div
           ref={p1Ref}
           className="sm:absolute sm:inset-0 panel-content pointer-events-auto pt-8 sm:pt-16 opacity-100 transition-opacity duration-500 ease-out max-w-6xl mx-auto w-full px-6"
@@ -385,10 +385,9 @@ export function ImmersiveStory() {
           </div>
         </div>
 
-        {/* PANEL 2: Market Shift */}
         <div
           ref={p2Ref}
-          className="sm:absolute sm:inset-0 flex flex-col justify-center panel-content pointer-events-auto sm:opacity-0 w-full max-w-6xl mx-auto px-6"
+          className="sm:absolute sm:inset-0 flex flex-col justify-center panel-content pointer-events-auto py-8 sm:py-0 sm:opacity-0 w-full max-w-6xl mx-auto px-6"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center">
             <div className="w-full space-y-6 text-center sm:text-left col-span-1">
