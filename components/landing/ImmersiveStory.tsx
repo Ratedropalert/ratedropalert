@@ -272,28 +272,17 @@ export function ImmersiveStory() {
   return (
     <div ref={wrapperRef} className="relative min-h-dvh overflow-hidden">
       {/* Content Container */}
-      <div className="sm:fixed sm:inset-0 flex flex-col max-sm:gap-12 items-center justify-center z-10 pointer-events-none ">
-        {/* PANEL 1: Stuck at 6.25% */}
+      <div className="sm:fixed sm:inset-0 flex flex-col items-center justify-center z-10 pointer-events-none ">
         <div
           ref={p1Ref}
-          className="sm:absolute sm:inset-0 panel-content pointer-events-auto pt-16 opacity-100 transition-opacity duration-500 ease-out max-w-6xl mx-auto w-full px-6"
+          className="sm:absolute sm:inset-0 panel-content pointer-events-auto pt-8 sm:pt-16 opacity-100 transition-opacity duration-500 ease-out max-w-6xl mx-auto w-full px-6"
         >
           <div className="flex flex-col items-center justify-center mb-8">
-            <p className="text-yellow-400 text-[10px] sm:text-sm font-bold mb-2">
-              We&apos;ll let you know when refinancing actually makes sense
-            </p>
-            <div className="flex items-center justify-center">
-              <ArrowUp className="rotate-45 text-red-500 font-extrabold w-12 h-12 sm:w-20 sm:h-20" />
-              <span className="sm:text-7xl text-5xl font-extrabold text-[#ef4444]">
-                Rate
-              </span>
-              <span className="sm:text-7xl text-5xl font-extrabold text-[#22c55e]">
-                Drop
-              </span>
-              <span className="sm:text-7xl text-5xl font-extrabold text-white">
-                Alert
-              </span>
-            </div>
+            <h2 className="text-yellow-400 text-2xl sm:text-4xl lg:text-5xl font-black mb-2 text-center leading-tight">
+              We&apos;ll let you know when
+              <br className="sm:hidden" />
+              refinancing actually makes sense
+            </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
             <div className="sm:col-span-5 space-y-3 text-center sm:text-left">
@@ -483,10 +472,9 @@ export function ImmersiveStory() {
           </div>
         </div>
 
-        {/* PANEL 3: Mobile Offer ($578/mo) */}
         <div
           ref={p3Ref}
-          className="sm:absolute sm:inset-0 flex flex-col items-center justify-center panel-content pointer-events-auto pt-16 sm:opacity-0"
+          className="sm:absolute sm:inset-0 flex flex-col items-center justify-center panel-content pointer-events-auto pt-8 sm:pt-16 sm:opacity-0"
         >
           <Card className="w-full max-w-[320px] px-6 bg-slate-900/80 backdrop-blur-2xl border border-emerald-500/30 rounded-[2.5rem] p-2 shadow-[0_0_60px_rgba(16,185,129,0.2)]">
             <CardContent className="bg-black rounded-[2rem] p-6 h-[520px] flex flex-col relative overflow-hidden">
