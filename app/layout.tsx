@@ -9,7 +9,7 @@ import Script from "next/script";
 import { MetaPixel } from "@/components/shared/meta-pixel";
 import { Suspense } from "react";
 
-const META_PIXEL_ID = '764118842944511';
+const META_PIXEL_ID = '1404616151307706';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
